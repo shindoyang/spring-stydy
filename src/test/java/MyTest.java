@@ -1,4 +1,6 @@
+import com.shindo.inter.Calculator;
 import com.shindo.inter.MyCalculator;
+import com.shindo.proxy.CalculatoryProxy;
 
 /**
  * @Author: 杨耿
@@ -9,7 +11,11 @@ import com.shindo.inter.MyCalculator;
  */
 public class MyTest {
 	public static void main(String[] args) {
-		MyCalculator myCaculator = new MyCalculator();
-		System.out.println(myCaculator.add(1, 2));
+//		Calculator calculator = new MyCalculator();
+		Calculator calculator = CalculatoryProxy.getProxy(new MyCalculator());
+		System.out.println(calculator.add(1, 2));
+		System.out.println(calculator.sub(1, 2));
+		System.out.println(calculator.mult(1, 2));
+		System.out.println(calculator.div(1, 2));
 	}
 }
